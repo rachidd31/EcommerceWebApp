@@ -1,0 +1,51 @@
+<div class="auth-container">
+  <div class="auth-form" *ngIf="!showRegistrationForm">
+    <h2>Login</h2>
+    <form >
+      <!-- Login form fields -->
+      <input type="email" placeholder="email" [(ngModel)]="email" name="email" required>
+      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+      <button (click)="login()">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#" (click)="showRegistrationForm = true; $event.preventDefault()">Register</a></p>
+
+
+    <div class="row mt-2">
+      <button mat-button (click)="signInWithGoogle()" class="auth-button">
+        <div class="card shadow text-center">
+          <div class="card-body">
+            <i class="fab fa-google fa-lg"></i> Sign In with Google
+          </div>
+        </div>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="auth-form" *ngIf="showRegistrationForm">
+    <h2>Register</h2>
+    <form (ngSubmit)="register()">
+      <!-- Registration form fields -->
+      <!--      <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required>-->
+      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="#" (click)="showRegistrationForm = false; $event.preventDefault()">Login</a></p>
+
+
+    <div class="row mt-2">
+      <button mat-button (click)="signInWithGoogle()" class="auth-button">
+        <div class="card shadow text-center">
+          <div class="card-body">
+            <i class="fab fa-google fa-lg"></i> Sign Up with Google
+          </div>
+        </div>
+      </button>
+    </div>
+
+  </div>
+
+
+
+</div>

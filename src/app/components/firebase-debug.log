@@ -1,0 +1,25 @@
+[debug] [2024-01-07T20:17:26.887Z] ----------------------------------------------------------------------
+[debug] [2024-01-07T20:17:26.889Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Fujitsu LifeBook u\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-01-07T20:17:26.890Z] CLI Version:   13.0.2
+[debug] [2024-01-07T20:17:26.890Z] Platform:      win32
+[debug] [2024-01-07T20:17:26.891Z] Node Version:  v18.18.0
+[debug] [2024-01-07T20:17:26.892Z] Time:          Sun Jan 07 2024 21:17:26 GMT+0100 (GMT+01:00)
+[debug] [2024-01-07T20:17:26.893Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-07T20:17:27.016Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-07T20:17:27.017Z] > authorizing via signed-in user (rachidjarmouni1972@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Fujitsu LifeBook u\Desktop\Web Project\E-Commerce-Store-main
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "public": "dist/E-Commerce-Store-main",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "database": {
+    "rules": "firebase-rules.json"
+  }
+}

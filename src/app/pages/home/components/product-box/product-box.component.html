@@ -1,0 +1,60 @@
+<mat-card *ngIf="product" [ngClass]="{ 'text-center': !fullWidthMode }"
+          class="shadow-2xl" class="clickable-card" >
+  <div mat-raised-button routerLink="/product" [ngClass]="{ flex: fullWidthMode }" >
+<!--    <button mat-raised-button routerLink="/auth">-->
+
+
+
+      <img (click)="openDialog()"
+        class="mb-1 mx-auto"
+        [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
+        [src]="product.image"
+      />
+<!--    </button>-->
+
+    <div
+      class="w-full"
+      [ngClass]="{ 'px-8 flex flex-col justify-between': fullWidthMode }"
+    >
+      <div>
+        <h5>{{ product.category }}</h5>
+        <p
+          class="truncate hover:whitespace-normal"
+          [ngClass]="{ truncate: !fullWidthMode }"
+        >
+          {{ product.title }}
+        </p>
+        <p *ngIf="fullWidthMode">
+          {{ product.description }}
+        </p>
+      </div>
+
+
+
+
+<!--      <div class="flex justify-between">-->
+<!--        <span class="text-red-400 text-2xl">{{ product.price | currency }}</span>-->
+<!--        <button (click)="onAddToCart()">-->
+<!--          <mat-icon class="icon-display" style="color:green;">shopping_cart</mat-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+
+      <div class="flex justify-between">
+        <span class="text-red-400 text-2xl">{{ product.price | currency }}</span>
+        <button (click)="onAddToCart()">
+          <mat-icon class="icon-display" style="color:green; position: relative;">
+            shopping_cart
+<!--            <span style="position: absolute; top: 0px; left: 10px; font-size: 1px; color: black; padding: 4px 6px;">+</span>-->
+          </mat-icon>
+        </button>
+      </div>
+
+
+
+
+    </div>
+
+
+  </div>
+
+</mat-card>

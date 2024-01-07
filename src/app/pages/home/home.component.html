@@ -1,0 +1,91 @@
+<!-- home.component.html -->
+
+<mat-drawer-container [autosize]="true" class="min-h-full max-w-full mx-auto">
+  <mat-drawer mode="push" [opened]="isDrawerOpened" class="p-6">
+    <!-- Add filters or any other content you want in the drawer -->
+    <app-filters (showCategory)="onShowCategory($event)"></app-filters>
+  </mat-drawer>
+
+  <mat-drawer-content class="p-6">
+    <!-- Centered search bar -->
+    <div class="text-center my-8 bg-gray-300 p-4">
+      <form [formGroup]="searchForm">
+        <input type="text" formControlName="searchTerm" placeholder="Search products" class="py-3 px-6 text-xl" />
+        <button mat-icon-button (click)="searchProducts()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+    </div>
+
+    <!-- Product grid and other content -->
+    <app-products-header
+            (columnsCountChange)="onColumnsCountChange($event)"
+            (itemsCountChange)="onItemsCountChange($event)"
+            (sortChange)="onSortChange($event)"
+    ></app-products-header>
+
+    <mat-grid-list
+            *ngIf="products && products.length"
+            gutterSize="16"
+            [cols]="cols"
+            [rowHeight]="rowHeight"
+    >
+      <mat-grid-tile *ngFor="let product of products" class="shadow-2xl">
+        <div
+                (addToCart)="onAddToCart($event)"
+                app-product-box
+                [product]="product"
+                [fullWidthMode]="cols === 1"
+                class="w-full"
+        ></div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<mat-drawer-container-->
+<!--  [autosize]="true"-->
+<!--  class="min-h-full max-w-full mx-auto"-->
+<!--&gt;-->
+<!--  <mat-drawer mode="push" [opened]="isDrawerOpened" class="p-6">-->
+<!--    <app-filters (showCategory)="onShowCategory($event)"></app-filters>-->
+<!--  </mat-drawer>-->
+
+<!--  <mat-drawer-content class="p-6">-->
+<!--    <app-products-header-->
+<!--      (columnsCountChange)="onColumnsCountChange($event)"-->
+<!--      (itemsCountChange)="onItemsCountChange($event)"-->
+<!--      (sortChange)="onSortChange($event)"-->
+<!--    >-->
+<!--      -->
+<!--    </app-products-header>-->
+<!--    <mat-grid-list-->
+<!--      *ngIf="products && products.length"-->
+<!--      gutterSize="16"-->
+<!--      [cols]="cols"-->
+<!--      [rowHeight]="rowHeight"-->
+<!--    >-->
+<!--      <mat-grid-tile *ngFor="let product of products" class="shadow-2xl">-->
+<!--        <div-->
+<!--          (addToCart)="onAddToCart($event)"-->
+<!--          app-product-box-->
+<!--          [product]="product"-->
+<!--          [fullWidthMode]="cols === 1"-->
+<!--          class="w-full"-->
+<!--        ></div>-->
+<!--      </mat-grid-tile>-->
+<!--    </mat-grid-list>-->
+<!--  </mat-drawer-content>-->
+<!--</mat-drawer-container>-->

@@ -1,0 +1,115 @@
+<mat-toolbar class="justify-between max-w-full mx-auto border-x" style="background-color: lightslategrey">
+
+  <button (click)="showSideBar()">
+  <div style="display: flex; align-items: center;">
+    <mat-icon style="font-size: 30px">menu</mat-icon>
+    <a style="font-size: 30px" routerLink="home">MyStore</a>
+  </div>
+  </button>
+<!--  <div style="padding: 0 5px;">-->
+<!--    <input-->
+<!--      class="search-control"-->
+<!--      type="text"-->
+<!--      placeholder="Search"-->
+<!--      [(ngModel)]="searchQuery"-->
+<!--      (ngModelChange)="onSearchChange()"-->
+<!--      #searchbar-->
+<!--      style="font-size: 16px; padding: 5px; height: 50px; width:600px"-->
+<!--    />-->
+<!--    <button class="search-icon" mat-icon-button [disabled]="false">-->
+<!--      <mat-icon>search</mat-icon>-->
+<!--    </button>-->
+
+<!--  </div>-->
+
+
+
+
+  <div class="justify-between">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon
+        [matBadge]="itemsQuantity"
+        [matBadgeHidden]="!itemsQuantity"
+        style="font-size: 50px; margin-right: 10px;"
+      matBadgeColor="warn"
+      >
+      shopping_cart
+      </mat-icon>
+    </button>
+
+    <button style="margin-left: 20px;" [matMenuTriggerFor]="user"> <!-- Add margin-left -->
+      <mat-icon class="icon-display">account_circle</mat-icon>
+    </button>
+  </div>
+
+
+  <mat-menu #menu="matMenu">
+    <div class="p-3 divide-y divide-solid">
+      <div class="pb-3 flex justify-between">
+        <span class="mr-20">{{ cart.items.length }} items</span>
+        <a routerLink="cart">View Cart</a>
+      </div>
+      <div *ngIf="cart.items.length" class="py-3">
+        <div
+          *ngFor="let item of cart.items"
+          class="flex justify-between font-light mb-2"
+        >
+          {{ item.name }} x {{ item.quantity }}
+          <span class="font-bold not-italic">{{ item.price | currency }}</span>
+        </div>
+      </div>
+      <div class="flex justify-between py-3 font-light">
+        Total:
+        <span class="font-bold not-italic">{{
+          getTotal(cart.items) | currency
+        }}</span>
+      </div>
+
+
+      <div class="pt-3 flex justify-between">
+        <button
+          (click)="onClearCart()"
+          class="bg-rose-600 text-white rounded-full w-9 h-9"
+        >
+          <mat-icon>remove_shopping_cart</mat-icon>
+        </button>
+        <button
+          routerLink="cart"
+          class="bg-green-600 text-white rounded-full w-9 h-9"
+        >
+          <mat-icon>shopping_cart_checkout</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-menu>
+
+
+  <mat-menu #user="matMenu">
+
+    <div class="p-3 divide-y divide-solid ">
+      <mat-card *ngIf="this.authservice.isLogin">
+        <mat-icon class="justify-between">account_circle</mat-icon>
+        <h2>{{this.authservice.userEmail}}</h2>
+
+      </mat-card>
+
+      <mat-card mat-raised-button routerLink="/history" color="primary" flex-wrap="wrap;" *ngIf="this.authservice.isLogin">
+        <mat-icon>shopping_cart</mat-icon>
+        <h2>Votre Commandes</h2>
+      </mat-card>
+
+      <mat-card class="content-center">
+        <ng-container *ngIf="!this.authservice.isLogin; else logoutButton">
+          <button mat-raised-button routerLink="/login" color="primary">Login</button>
+        </ng-container>
+        <ng-template #logoutButton>
+          <button mat-raised-button routerLink="/home" (click)="this.authservice.logout()" color="warn">Logout</button>
+        </ng-template>
+      </mat-card>
+
+    </div>
+  </mat-menu>
+
+
+
+</mat-toolbar>
