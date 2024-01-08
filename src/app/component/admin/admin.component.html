@@ -1,0 +1,9 @@
+<!-- admin.component.html -->
+<div *ngFor="let user of users">
+    <p>{{ user.email }}</p>
+<!--    <button (click)="deleteUser(user.uid)">Delete</button>-->
+<!--    <button (click)="disableUser(user.uid)">Disable</button>-->
+    <button mat-button (click)="fetchUsers()" >Delete</button>
+    <button >Disable</button>
+</div>
+
