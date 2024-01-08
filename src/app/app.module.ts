@@ -44,6 +44,7 @@ import {MatInputModule} from "@angular/material/input";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { HistoryCommandsComponent } from './components/history-commands/history-commands.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 
 
@@ -62,7 +63,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     ForgotPasswordComponent,
     HistoryCommandsComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
 
   ],
     imports: [

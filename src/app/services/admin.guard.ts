@@ -7,25 +7,17 @@ import { AuthService } from './auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
     constructor(private authService: AuthService, private router: Router) { }
 
     canActivate(): boolean {
-        if (this.authService.isLogin) {
-            return true;
-        } else {
-            // If not authenticated, redirect to the login page
-            this.router.navigate(['/login']);
-            return false;
-        }
-    }
-
-
-    canActivate2(): boolean {
         if (this.authService.isAdmin) {
             return true;
+        } else {
+            // If not an admin, redirect to another route or show an access denied message
+            this.router.navigate(['home']);
+            return false;
         }
-        return false;
     }
 }

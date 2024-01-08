@@ -6,6 +6,9 @@ import {ProductDetailsComponent} from "./product-details/product-details.compone
 import {LoginComponent} from "./component/login/login.component";
 import {AuthGuard} from "./services/auth.guard";
 import {HistoryCommandsComponent} from "./components/history-commands/history-commands.component";
+import {AdminComponent} from "./component/admin/admin.component";
+import {AuthService} from "./services/auth.service";
+import {AdminGuard} from "./services/admin.guard";
 
 
 
@@ -23,6 +26,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent, canActivate:[AdminGuard]
   },
 
   {

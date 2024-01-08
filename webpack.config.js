@@ -6,5 +6,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+
+  resolve: {
+    fallback: {
+      crypto: require.resolve('crypto-browserify'),
+      fs: false, // or require.resolve('fs') if needed
+    },
+  },
 };

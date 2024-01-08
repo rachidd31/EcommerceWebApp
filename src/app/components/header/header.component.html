@@ -89,7 +89,9 @@
     <div class="p-3 divide-y divide-solid ">
       <mat-card *ngIf="this.authservice.isLogin">
         <mat-icon class="justify-between">account_circle</mat-icon>
-        <h2>{{this.authservice.userEmail}}</h2>
+        <h2 *ngIf="authservice.isAdmin">Admin</h2>
+        <h2 *ngIf="!authservice.isAdmin">{{ authservice.userEmail }}</h2>
+
 
       </mat-card>
 
@@ -105,6 +107,14 @@
         <ng-template #logoutButton>
           <button mat-raised-button routerLink="/home" (click)="this.authservice.logout()" color="warn">Logout</button>
         </ng-template>
+
+
+        <ng-container *ngIf="this.authservice.isAdmin">
+          <button mat-raised-button routerLink="/admin" color="primary">admin</button>
+        </ng-container>
+
+
+
       </mat-card>
 
     </div>

@@ -20,4 +20,12 @@ export class AuthGuard implements CanActivate {
             return false;
         }
     }
+
+
+    canActivate2(): boolean {
+        if (this.authService.isAdmin) {
+            return true;
+        }
+        return false;
+    }
 }
